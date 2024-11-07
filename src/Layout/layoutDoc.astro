@@ -1,0 +1,358 @@
+---
+import Image from "astro/components/Image.astro";
+import { Icon } from "astro-icon/components";
+import DarkModeToggle from '../components/DarkModeToggle';
+
+const { title } = Astro.props;
+
+// Estructura de navegación actualizada (sin introducción)
+const docNavigation = [
+  {
+    section: "Componentes",
+    items: [
+      { 
+        title: "Buttons",
+        href: "/docs/components/buttons",
+        subitems: ["Button", "IconButton", "ButtonGroup"]
+      },
+      { 
+        title: "Forms",
+        href: "/docs/components/forms",
+        subitems: ["Input", "Select", "Checkbox", "Radio", "Switch"]
+      },
+      { 
+        title: "Layout",
+        href: "/docs/components/layout",
+        subitems: ["Container", "Grid", "Box", "Stack", "Divider"]
+      },
+      { 
+        title: "Navigation",
+        href: "/docs/components/navigation",
+        subitems: ["Menu", "Tabs", "Breadcrumb", "Link", "Pagination"]
+      },
+      { 
+        title: "Feedback",
+        href: "/docs/components/feedback",
+        subitems: ["Alert", "Toast", "Progress", "Spinner"]
+      }
+    ]
+  },
+  {
+    section: "Guías",
+    items: [
+      { title: "Personalización", href: "/docs/guides/customization" },
+      { title: "Mejores Prácticas", href: "/docs/guides/best-practices" },
+      { title: "Resolución de Problemas", href: "/docs/guides/troubleshooting" },
+    ]
+  }
+];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title ? `${title} | Docs FortComponents` : "Documentación FortComponents"}</title>
+    <link rel="icon" href="/favicon.png" />
+  </head>
+  <body class="bg-white dark:bg-gray-900 dark:text-white">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-primaryColor to-secondaryColor dark:from-dark-primary dark:to-dark-accent p-4 text-white fixed w-full z-50">
+      <div class="flex items-center justify-between max-w-7xl mx-auto">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-2 bg-white rounded-lg px-4 py-2 hover:scale-105 transition-transform duration-200">
+          <Image src="/favicon.png" alt="Logo" class="w-8 h-8" width="32" height="32" />
+          <span class="font-bold text-primaryColor">FortComponents</span>
+        </a>
+
+        <!-- Búsqueda -->
+        <div class="hidden md:flex items-center bg-white/10 rounded-lg px-4 py-2 flex-grow mx-8 max-w-xl">
+          <Icon name="mdi:search" class="w-5 h-5 text-white/80" />
+          <input 
+            id="searchInput"
+            type="search" 
+            placeholder="Buscar en la documentación..." 
+            class="bg-transparent border-none outline-none text-white placeholder-white/80 w-full px-3"
+          />
+        </div>
+
+        <!-- Botón de Instalación -->
+        <a 
+          href="/docs/installation" 
+          class="hidden md:flex items-center space-x-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors duration-200"
+        >
+          <Icon name="mdi:download" class="w-5 h-5" />
+          <span>Instalación</span>
+        </a>
+
+        <!-- Botón menú móvil -->
+        <button id="sidebarToggle" class="lg:hidden text-white">
+          <Icon name="mdi:menu" class="w-8 h-8" />
+        </button>
+
+        <div class="flex items-center gap-4">
+          <DarkModeToggle client:load />
+        </div>
+      </div>
+    </header>
+
+    <div class="flex">
+      <!-- Sidebar izquierdo fusionado -->
+      <aside id="sidebar" class="w-72 bg-gray-50 dark:bg-dark-primary fixed h-[calc(100vh-4rem)] overflow-y-auto transition-transform duration-300 lg:translate-x-0 -translate-x-full lg:relative top-16 left-0 shrink-0">
+        <nav class="p-4 pt-10">
+          {docNavigation.map((section) => (
+            <div class="mb-6">
+              <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                {section.section}
+              </h3>
+              <ul class="space-y-2">
+                {section.items.map((item) => (
+                  <li>
+                    <a 
+                      href={item.href}
+                      class={`block px-3 py-2 text-gray-700 dark:text-dark-text hover:bg-primaryColor hover:text-white dark:hover:bg-dark-accent rounded-lg transition-colors duration-200 ${
+                        item.subitems ? 'mb-1' : ''
+                      }`}
+                    >
+                      {item.title}
+                    </a>
+                    {item.subitems && (
+                      <ul class="ml-4 mt-1 space-y-1">
+                        {item.subitems.map((subitem: string) => (
+                          <li>
+                            <a 
+                              href={`/docs/components/${item.title.toLowerCase()}/${subitem.toLowerCase()}`}
+                              class="block px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hover:text-primaryColor dark:hover:text-dark-accent hover:bg-primaryColor/10 dark:hover:bg-dark-accent/10 rounded-lg transition-colors duration-200"
+                            >
+                              {subitem}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </aside>
+
+      <!-- Contenedor principal con ancho controlado -->
+      <div class="flex-1 flex justify-center min-h-screen pt-10">
+        <div class="w-full px-6 py-8 mx-auto">
+          <slot />
+        </div>
+      </div>
+
+      <!-- Sidebar derecho -->
+      <aside class="hidden xl:block w-72 2xl:w-96 border-l border-primaryColor/20 dark:border-dark-accent/20 shrink-0">
+        <div class="sticky top-20 space-y-4 pt-4 px-4">
+          <!-- Estadísticas -->
+          <div class="bg-primaryColor/5 dark:bg-dark-primary rounded-lg p-3 2xl:p-4">
+            <h3 class="text-lg font-bold mb-2 2xl:mb-3 text-primaryText dark:text-white">Estadísticas</h3>
+            <div class="grid grid-cols-2 gap-2 2xl:gap-4">
+              <div class="bg-white dark:bg-dark-surface  p-2 2xl:p-3 rounded-lg border border-primaryColor/20 dark:border-dark-accent/20">
+                <p class="text-2xl font-bold text-primaryColor dark:text-dark-accent">25+</p>
+                <p class="text-sm text-primaryText/70 dark:text-gray-300">Componentes</p>
+              </div>
+              <div class="bg-white dark:bg-dark-surface  p-3 rounded-lg border border-primaryColor/20 dark:border-dark-accent/20">
+                <p class="text-2xl font-bold text-primaryColor dark:text-dark-accent">98%</p>
+                <p class="text-sm text-primaryText/70 dark:text-gray-300">Satisfacción</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enlaces populares -->
+          <div class="bg-primaryColor/5 dark:bg-dark-primary rounded-lg p-3 2xl:p-4">
+            <h3 class="text-lg font-bold mb-2 text-primaryText dark:text-white">Más visitados</h3>
+            <ul class="space-y-1.5 2xl:space-y-2">
+              {['Button', 'Modal', 'Form'].map((item, index) => (
+                <li>
+                  <a href="#" class="flex items-center gap-2 text-primaryText dark:text-gray-300 hover:text-accent dark:hover:text-dark-accent transition-colors">
+                    <span class="w-5 h-5 bg-accent/10 dark:bg-gray-800 rounded-full flex items-center justify-center text-xs">{index + 1}</span>
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Últimas Novedades -->
+          <div class="bg-primaryColor/5 dark:bg-dark-primary rounded-lg p-4">
+            <h3 class="text-lg font-bold mb-2 text-primaryText dark:text-white">Últimas Novedades</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-500 mt-2"></span>
+                <div>
+                  <p class="font-medium dark:text-white">Nuevo Button v2.0</p>
+                  <p class="text-sm text-primaryText/70 dark:text-gray-400">Mejoras en accesibilidad y diseño</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-500 mt-2"></span>
+                <div>
+                  <p class="font-medium">Forms actualizado</p>
+                  <p class="text-sm dark:text-gray-400 text-primaryText/70">Nuevas validaciones y estados</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Versiones -->
+          <div class="bg-primaryColor/5 dark:bg-dark-primary rounded-lg p-4">
+            <h3 class="text-lg font-bold mb-2 text-primaryText dark:text-white">Versiones</h3>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-1 bg-accent text-white text-sm rounded">v2.1.0</span>
+              <span class="text-sm text-primaryText/70 dark:text-dark-text">Actual</span>
+            </div>
+            <a href="#" class="text-sm text-accent dark: hover:underline">
+              Ver changelog
+            </a>
+          </div>
+
+          <!-- Recursos -->
+          <div class="bg-primaryColor/5 dark:bg-dark-primary rounded-lg p-4">
+            <h3 class="text-lg font-bold mb-2 text-primaryText dark:text-white">Recursos</h3>
+            <div class="space-y-2">
+              <a href="#" class="block p-3 bg-white dark:bg-dark-surface rounded-md hover:bg-accent dark:hover:bg-dark-accent transition-colors text-primaryText dark:text-gray-300 hover:text-white border border-primaryColor/20 dark:border-dark-accent/20">
+                <span class="font-medium">Github</span>
+                <p class="text-sm opacity-70">El repositorio de GitHub</p>
+              </a>
+              
+            </div>
+          </div>
+
+          <!-- Soporte -->
+          <div class="bg-primaryColor/5 dark:bg-dark-primary rounded-lg p-4">
+            <h3 class="text-lg font-bold mb-2 text-primaryText dark:text-white">¿Necesitas ayuda?</h3>
+            <a href="#" class="inline-flex items-center gap-2 text-accent hover:underline">
+              <Icon name="mdi:discord" class="w-5 h-5" />
+              Únete a Discord
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      // Toggle sidebar en móvil
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const sidebar = document.getElementById('sidebar');
+      
+      if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', () => {
+          sidebar.classList.toggle('-translate-x-full');
+        });
+      }
+
+      // Cerrar sidebar al hacer clic fuera en móvil
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth < 1024) {  // Solo en móvil
+          const isClickInsideSidebar = sidebar?.contains(e.target as Node);
+          const isClickInsideToggle = sidebarToggle?.contains(e.target as Node);
+          
+          if (!isClickInsideSidebar && !isClickInsideToggle && !sidebar?.classList.contains('-translate-x-full')) {
+            sidebar?.classList.add('-translate-x-full');
+          }
+        }
+      });
+
+      // Búsqueda mejorada
+      const searchInput = document.getElementById('searchInput');
+
+      if (searchInput && sidebar) {
+        searchInput.addEventListener('input', (e) => {
+          const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+          
+          // Obtener todos los elementos navegables
+          const navItems = sidebar.querySelectorAll('li');
+          
+          navItems.forEach(item => {
+            const mainLink = item.querySelector('a');
+            const subItems = item.querySelectorAll('ul li');
+            const mainText = mainLink?.textContent?.toLowerCase() || '';
+            let shouldShow = mainText.includes(searchTerm);
+            
+            // Buscar también en subitems
+            subItems.forEach(subItem => {
+              const subLink = subItem.querySelector('a');
+              const subText = subLink?.textContent?.toLowerCase() || '';
+              
+              if (subText.includes(searchTerm)) {
+                shouldShow = true;
+                if (subItem instanceof HTMLElement) {
+                  subItem.style.display = 'block';
+                }
+              } else {
+                if (subItem instanceof HTMLElement) {
+                  subItem.style.display = searchTerm ? 'none' : 'block';
+                }
+              }
+            });
+
+            // Mostrar/ocultar el item principal
+            item.style.display = shouldShow || !searchTerm ? 'block' : 'none';
+            
+            // Si hay término de búsqueda y el item tiene subitems, mostrarlos
+            if (searchTerm && shouldShow) {
+              const subList = item.querySelector('ul');
+              if (subList) {
+                subList.style.display = 'block';
+              }
+            }
+          });
+
+          // Mostrar/ocultar secciones según si tienen items visibles
+          const sections = sidebar.querySelectorAll('.mb-6');
+          sections.forEach(section => {
+            const hasVisibleItems = Array.from(section.querySelectorAll('li'))
+              .some(item => item.style.display !== 'none');
+            if (section instanceof HTMLElement) {
+              section.style.display = hasVisibleItems ? 'block' : 'none';
+            }
+          });
+        });
+
+        // Restablecer visualización al limpiar la búsqueda
+        searchInput.addEventListener('search', () => {
+          if ((searchInput as HTMLInputElement).value === '') {
+            const allElements = sidebar.querySelectorAll('li, ul');
+            allElements.forEach(el => {
+              if (el instanceof HTMLElement) {
+                el.style.display = '';
+              }
+            });
+            
+            const sections = sidebar.querySelectorAll('.mb-6');
+            sections.forEach(section => {
+              if (section instanceof HTMLElement) {
+                section.style.display = 'block';
+              }
+            });
+          }
+        });
+      }
+    </script>
+
+    <style>
+      /* Estilizar la barra de desplazamiento */
+      #sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      #sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      #sidebar::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 2px;
+      }
+
+      #sidebar::-webkit-scrollbar-thumb:hover {
+        background: #a0aec0;
+      }
+    </style>
+  </body>
+</html>

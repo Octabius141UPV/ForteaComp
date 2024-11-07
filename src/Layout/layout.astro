@@ -1,0 +1,188 @@
+---
+import Image from "astro/components/Image.astro";
+import { Icon } from "astro-icon/components";
+import DarkModeToggle from '../components/DarkModeToggle';
+
+// src/layouts/layout.astro
+
+
+
+const { title } = Astro.props; // Recibe el título de la página como prop
+---
+<html lang="es"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title ? `${title} | FortComponents` : "FortComponents"}</title>
+    <link rel="icon" href="/favicon.png" />
+  </head>
+  <body class="bg-white text-primaryText dark:bg-gray-900 dark:text-white">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-primaryColor to-secondaryColor p-4 text-primaryText flex items-center justify-between rounded-b-lg overflow-x-hidden relative">
+      
+      <!-- Logo -->
+      <div class="flex items-center bg-white rounded-lg lg:pr-3 2xl:py-1 hover:scale-105 transition-transform custom-shadow-colored m-1  duration-200">
+        <a class="flex items-center" href="/">
+          <Image src="/favicon.png" alt="Logo de FortComponents" class="2xl:m-4 m-2" width="50" height="50"/>
+          <h1 class="2xl:text-2xl  text-xl font-bold hidden lg:block">FortComponents</h1>
+        </a>
+      </div>
+      
+      
+        <!-- Navegación Central Permanentemente Centrada -->
+        <nav class="absolute left-1/2 transform -translate-x-1/2 lg:block hidden 2xl:text-xl text-lg">
+          <ul class="flex space-x-8 font-semibold text-white">
+            <li class="hover:scale-105 transition-transform"><a href="/">Inicio</a></li>
+            <li class="hover:scale-105 transition-transform"><a href="/components">Contacto</a></li>
+            <li class="hover:scale-105 transition-transform"><a href="/about">Acerca de</a></li>
+            <li class="hover:scale-105 transition-transform"><a href="/install">Instalación</a></li>
+          </ul>
+        </nav>
+      
+        <!-- Botón Componentes -->
+        <button class="bg-accent custom-shadow-lg rounded-lg py-3 px-8 hidden lg:block m-1 group relative overflow-hidden hover:bg-primaryColor hover:text-white transition-colors duration-300">
+          <div class="flex items-center justify-between relative z-10 transition-transform duration-300 group-hover:translate-x-[-150%]">
+            <span class="text-white font-bold 2xl:text-xl text-lg">Componentes</span>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center translate-x-full transition-transform duration-300 group-hover:translate-x-0">
+            <Icon name="mdi:arrow-right" class="w-10 h-10 text-white" />
+          </div>
+        </button>
+      
+        <!-- Icono de Menú para móviles -->
+        <div class="relative lg:hidden text-black">
+          <button id="menuButton" class="lg:hidden">
+            <Icon name="mdi:menu" class="w-14 h-14 hover:text-primaryColor transition-colors duration-200 text-white" />
+          </button>
+          
+          <div id="mobileMenu" class="fixed right-4 mt-2 w-64 bg-white rounded-lg shadow-lg py-4 lg:hidden text-black z-50 hidden">
+            <nav class="px-4">
+              <ul class="space-y-4 font-semibold text-primaryText">
+                <li class="hover:text-primaryColor transition-colors"><a href="/">Inicio</a></li>
+                <li class="hover:text-primaryColor transition-colors"><a href="/components">Contacto</a></li>
+                <li class="hover:text-primaryColor transition-colors"><a href="/about">Acerca de</a></li>
+                <li class="hover:text-primaryColor transition-colors"><a href="/install">Instalación</a></li>
+              </ul>
+              <button class="w-full bg-accent rounded-lg py-2 px-4 mt-4 text-white font-bold">
+                Componentes
+              </button>
+            </nav>
+          </div>
+        </div>
+
+        <script>
+          const menuButton = document.getElementById('menuButton');
+          const mobileMenu = document.getElementById('mobileMenu');
+
+          if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+              mobileMenu.classList.toggle('hidden');
+            });
+          }
+        </script>
+      </header>
+      
+    
+
+    <!-- Main content -->
+    <main class=" flex-grow">
+      <slot /> <!-- Aquí se inyectará el contenido de cada página -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-8 bg-secondaryBackground text-white rounded-t-lg -mt-4 .custom-shadow-colored">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between space-y-6 lg:space-y-0">
+        
+        <!-- Logo y Descripción -->
+        <div class="text-center lg:text-left">
+          <a href="/" class="flex items-center space-x-2 hover:scale-105 transition-transform">
+            <img src="/favicon.png" alt="Logo de FortComponents" class="w-10 h-10 inline-block rounded-lg" />
+            <span class="text-xl font-bold">FortComponents</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-400 max-w-xs">
+            FortComponents es tu biblioteca de componentes moderna y fácil de usar. Personaliza y potencia tus proyectos web con componentes de alta calidad.
+          </p>
+        </div>
+    
+        <!-- Menú de Navegación -->
+        <div class="flex flex-col space-y-2 lg:space-y-4 text-center lg:text-left">
+          <h3 class="text-lg font-semibold">Explorar</h3>
+          <ul class="space-y-1">
+            <li><a href="/" class="hover:text-accent">Inicio</a></li>
+            <li><a href="/components" class="hover:text-accent">Componentes</a></li>
+            <li><a href="/about" class="hover:text-accent">Acerca de</a></li>
+            <li><a href="/contact" class="hover:text-accent">Contacto</a></li>
+          </ul>
+        </div>
+    
+        <!-- Enlaces de Recursos -->
+        <div class="flex flex-col space-y-2 lg:space-y-4 text-center lg:text-left">
+          <h3 class="text-lg font-semibold">Recursos</h3>
+          <ul class="space-y-1">
+            <li><a href="/docs" class="hover:text-accent">Documentación</a></li>
+            <li><a href="/get-started" class="hover:text-accent">Guía de Inicio</a></li>
+            <li><a href="/support" class="hover:text-accent">Soporte</a></li>
+          </ul>
+        </div>
+    
+        <!-- Enlaces a Redes Sociales -->
+        <div class="flex flex-col space-y-2 lg:space-y-4 text-center lg:text-left">
+          <h3 class="text-lg font-semibold">Síguenos</h3>
+          <div class="flex space-x-4 justify-center lg:justify-start">
+            <a href="#" class="hover:text-accent transition-colors duration-200" aria-label="Facebook">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.338v21.324C0 23.4.6 24 1.325 24H12.82v-9.294H9.692V11.01h3.127V8.294c0-3.1 1.874-4.792 4.616-4.792 1.31 0 2.436.098 2.764.143v3.205l-1.896.001c-1.485 0-1.774.706-1.774 1.741v2.283h3.55l-.464 3.696h-3.085V24h6.047c.73 0 1.325-.6 1.325-1.338V1.337C24 .6 23.4 0 22.675 0z"/>
+              </svg>
+            </a>
+            <a href="#" class="hover:text-accent transition-colors duration-200" aria-label="Twitter">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M24 4.557a9.916 9.916 0 0 1-2.825.775 4.927 4.927 0 0 0 2.163-2.723 9.876 9.876 0 0 1-3.127 1.194 4.915 4.915 0 0 0-8.361 4.482A13.938 13.938 0 0 1 1.671 3.15a4.916 4.916 0 0 0 1.523 6.568 4.897 4.897 0 0 1-2.229-.615v.061a4.919 4.919 0 0 0 3.946 4.827 4.902 4.902 0 0 1-2.224.085 4.917 4.917 0 0 0 4.6 3.416A9.862 9.862 0 0 1 0 21.539a13.944 13.944 0 0 0 7.548 2.212c9.058 0 14.01-7.514 14.01-14.01 0-.214-.005-.428-.014-.64A10.01 10.01 0 0 0 24 4.557z"/>
+              </svg>
+            </a>
+            <a href="#" class="hover:text-accent transition-colors duration-200" aria-label="GitHub">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.153-1.11-1.46-1.11-1.46-.909-.621.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.646.35-1.088.635-1.339-2.22-.252-4.555-1.11-4.555-4.943 0-1.091.39-1.982 1.029-2.68-.103-.253-.446-1.272.098-2.652 0 0 .84-.27 2.75 1.025A9.563 9.563 0 0 1 12 6.801a9.56 9.56 0 0 1 2.5.336c1.909-1.295 2.748-1.025 2.748-1.025.546 1.38.203 2.4.1 2.652.64.698 1.028 1.59 1.028 2.68 0 3.841-2.338 4.687-4.566 4.935.358.308.677.918.677 1.851 0 1.335-.012 2.415-.012 2.744 0 .267.18.577.688.479A10.005 10.005 0 0 0 22 12c0-5.523-4.477-10-10-10z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Línea divisora y aviso de derechos reservados -->
+      <div class="mt-8 border-t border-gray-600 pt-4 text-center text-gray-400 text-sm">
+        <p>© 2024 FortComponents. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
+<!-- Quiero crear estilos css -->
+
+<style>
+  .custom-shadow {
+  /* Desplazamiento X, desplazamiento Y, desenfoque, expansión, color */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.custom-shadow-lg {
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15); /* Sombra grande */
+}
+
+.custom-shadow-colored {
+  box-shadow: 0px 4px 6px rgba(91, 33, 182, 0.5); /* Sombra con color */
+}
+main {
+  min-height: calc(100vh - 300px); /* Ajusta según el tamaño de tu header y footer */
+}
+.menu-icon {
+  font-size: 64px; /* Cambia el tamaño a tu preferencia */
+  width: 64px; /* Ancho del icono */
+  height: 64px; /* Alto del icono */
+}
+
+/* Asegurar que el menú móvil esté por encima */
+#mobileMenu {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+</style>

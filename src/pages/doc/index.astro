@@ -1,0 +1,190 @@
+---
+import Layout from '../../Layout/layoutDoc.astro';
+import { Icon } from 'astro-icon/components';
+
+const components = {
+  "Buttons": {
+    items: [
+      {
+        name: "Button",
+        description: "Botón estándar para acciones principales y secundarias",
+        icon: "material-symbols:check-box-outline"
+      },
+      {
+        name: "IconButton",
+        description: "Botón circular optimizado para mostrar íconos",
+        icon: "material-symbols:circle-outline"
+      },
+      {
+        name: "ButtonGroup",
+        description: "Grupo de botones relacionados",
+        icon: "material-symbols:view-module"
+      }
+    ],
+    description: "Componentes interactivos para acciones del usuario"
+  },
+  "Forms": {
+    items: [
+      {
+        name: "Input",
+        description: "Campo de entrada para texto y números",
+        icon: "material-symbols:text-fields"
+      },
+      {
+        name: "Select",
+        description: "Menú desplegable para selección de opciones",
+        icon: "material-symbols:list"
+      },
+      {
+        name: "Checkbox",
+        description: "Casilla de verificación para opciones múltiples",
+        icon: "material-symbols:check-box-outline"
+      },
+      {
+        name: "Radio",
+        description: "Botón de opción única",
+        icon: "material-symbols:radio-button-checked"
+      },
+      {
+        name: "Switch",
+        description: "Interruptor para alternar estados",
+        icon: "material-symbols:toggle-on"
+      }
+    ],
+    description: "Elementos para captura de datos"
+  },
+  "Layout": {
+    items: [
+      {
+        name: "Container",
+        description: "Contenedor principal con máximo ancho",
+        icon: "material-symbols:aspect-ratio"
+      },
+      {
+        name: "Grid",
+        description: "Sistema de rejilla para layouts",
+        icon: "material-symbols:grid-view"
+      },
+      {
+        name: "Box",
+        description: "Contenedor básico para elementos",
+        icon: "material-symbols:check-box-outline-blank"
+      },
+      {
+        name: "Stack",
+        description: "Apilamiento vertical u horizontal de elementos",
+        icon: "material-symbols:layers"
+      },
+      {
+        name: "Divider",
+        description: "Línea divisoria entre elementos",
+        icon: "material-symbols:horizontal-rule"
+      }
+    ],
+    description: "Componentes estructurales y de disposición"
+  },
+  "Navigation": {
+    items: [
+      {
+        name: "Menu",
+        description: "Menú de navegación",
+        icon: "material-symbols:menu"
+      },
+      {
+        name: "Tabs",
+        description: "Pestañas para navegación",
+        icon: "material-symbols:tab"
+      },
+      {
+        name: "Breadcrumb",
+        description: "Navegación jerárquica",
+        icon: "material-symbols:chevron-right"
+      },
+      {
+        name: "Link",
+        description: "Enlaces y navegación",
+        icon: "material-symbols:link"
+      },
+      {
+        name: "Pagination",
+        description: "Navegación entre páginas",
+        icon: "material-symbols:pages"
+      }
+    ],
+    description: "Elementos de navegación y rutas"
+  },
+  "Feedback": {
+    items: [
+      {
+        name: "Alert",
+        description: "Mensajes de alerta y notificación",
+        icon: "material-symbols:warning"
+      },
+      {
+        name: "Toast",
+        description: "Notificaciones temporales",
+        icon: "material-symbols:notifications"
+      },
+      {
+        name: "Progress",
+        description: "Indicadores de progreso",
+        icon: "material-symbols:progress-activity"
+      },
+      {
+        name: "Spinner",
+        description: "Indicador de carga",
+        icon: "material-symbols:refresh"
+      }
+    ],
+    description: "Componentes informativos y de estado"
+  }
+};
+---
+
+<Layout title="Documentación de Componentes">
+  <div class="max-w-4xl mx-auto">
+    <div class="my-8">
+      <h1 class="text-5xl font-bold mb-4 text-primaryText dark:text-dark-text">Documentación</h1>
+    </div>
+    <div class="grid gap-8" id="componentsGrid">
+      {Object.entries(components).map(([category, data]) => (
+        <div class="space-y-4">
+          <div class="flex items-center gap-2">
+            <h2 class="text-2xl font-bold text-primaryText dark:text-dark-text">{category}</h2>
+            <span class="text-sm text-gray-500 dark:text-gray-400">({data.items.length})</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300">{data.description}</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {data.items.map((item) => (
+              <a
+                href={`/docs/components/${(typeof item === 'string' ? item : item.name).toLowerCase()}`}
+                class="p-4 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] 
+                       hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)] 
+                       hover:scale-[1.02] transition-all duration-150 
+                       flex flex-col items-center gap-3 
+                       bg-white dark:bg-dark-surface 
+                       hover:bg-secondaryColor/30 dark:hover:bg-dark-accent/20"
+              >
+                <div class="w-12 h-12 flex items-center justify-center rounded-lg">
+                  <Icon 
+                    name={item.icon}
+                    class="w-6 h-6 text-primaryColor dark:text-dark-accent transition-colors duration-150"
+                  />
+                </div>
+                <h3 class="font-semibold text-primaryText dark:text-dark-text transition-colors duration-150">
+                  {typeof item === 'string' ? item : item.name}
+                </h3>
+                {typeof item === 'object' && (
+                  <p class="text-sm text-gray-600 dark:text-gray-300 text-center transition-colors duration-150">
+                    {item.description}
+                  </p>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
