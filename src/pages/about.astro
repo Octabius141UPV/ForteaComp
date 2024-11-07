@@ -1,0 +1,46 @@
+---
+// about.astro
+import Layout from "../layouts/layout.astro"
+---
+
+<Layout title="Sobre Mí">
+  <div class="max-w-3xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-8">Sobre Mí</h1>
+    
+    <div class="prose dark:prose-invert">
+      <p class="text-lg mb-4">
+        ¡Hola! Soy Raúl Fortea, estudiante de tercer año en la Universitat Politècnica de València.
+        Me apasiona el desarrollo web, especialmente el frontend, y disfruto creando aplicaciones
+        modernas y eficientes usando tecnologías como Astro y React.
+      </p>
+      
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Mi Trayectoria</h2>
+      <p>
+        Actualmente estoy cursando el tercer año de mi carrera, donde he podido desarrollar
+        diversos proyectos que me han permitido aplicar y expandir mis conocimientos en
+        desarrollo web. Mi enfoque principal ha sido el frontend, trabajando en proyectos
+        personales que me han ayudado a dominar frameworks modernos y buenas prácticas
+        de desarrollo.
+      </p>
+      
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Proyectos Destacados</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          <strong>FortComponents:</strong> Biblioteca de componentes web construida con Astro
+          y TailwindCSS, enfocada en la reutilización y personalización.
+        </li>
+        
+      </ul>
+      
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Tecnologías</h2>
+      <ul class="list-disc pl-6 grid grid-cols-2 gap-2">
+        <li>Astro</li>
+        <li>React</li>
+        <li>TailwindCSS</li>
+        <li>JavaScript/TypeScript</li>
+        <li>HTML5/CSS3</li>
+        <li>Git</li>
+      </ul>
+    </div>
+  </div>
+</Layout>

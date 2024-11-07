@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/layout.astro"
+---
+
+<Layout title="Guía de Instalación">
+  <div class="max-w-3xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-8">Guía de Instalación</h1>
+    
+    <div class="prose dark:prose-invert">
+      <h2 class="text-2xl font-semibold mb-4">Inicio Rápido</h2>
+      
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-6">
+        <code class="text-sm">npm install your-package-name</code>
+      </div>
+      
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Uso Básico</h2>
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+        <pre><code class="language-javascript">
+<!-- import { Component } from 'your-package-name';
+
+// Implementación básica
+const example = new Component();
+example.init(); -->
+        </code></pre>
+      </div>
+      
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Configuración</h2>
+      <p>
+        Describe aquí las opciones de configuración de tu paquete...
+      </p>
+    </div>
+  </div>
+</Layout>
