@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function DarkModeToggle() {
+export default function DarkModeToggle({ iconColor = "white" }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') ?? 'light';
@@ -27,7 +27,7 @@ export default function DarkModeToggle() {
       className="p-2 rounded-lg hover:bg-accent transition-colors duration-150"
     >
       {theme === 'light' ? (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-6 h-6">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={iconColor} className="w-6 h-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
         </svg>
       ) : (
@@ -37,4 +37,4 @@ export default function DarkModeToggle() {
       )}
     </button>
   );
-} 
+}

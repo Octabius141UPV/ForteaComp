@@ -4,18 +4,18 @@ import Layout from "../layouts/layout.astro"
 ---
 
 <Layout title="Sobre Mí">
-  <div class="max-w-3xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-8">Sobre Mí</h1>
+  <div class="w-full max-w-[95%] md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto p-6 pt-10 md:p-14">
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-8">Sobre Mí</h1>
     
-    <div class="prose dark:prose-invert">
-      <p class="text-lg mb-4">
+    <div class="prose dark:prose-invert max-w-none">
+      <p class="text-base md:text-lg mb-4">
         ¡Hola! Soy Raúl Fortea, estudiante de tercer año en la Universitat Politècnica de València.
         Me apasiona el desarrollo web, especialmente el frontend, y disfruto creando aplicaciones
         modernas y eficientes usando tecnologías como Astro y React.
       </p>
       
-      <h2 class="text-2xl font-semibold mt-8 mb-4">Mi Trayectoria</h2>
-      <p>
+      <h2 class="text-xl md:text-2xl font-semibold mt-6 md:mt-8 mb-3 md:mb-4">Mi Trayectoria</h2>
+      <p class="text-base md:text-lg">
         Actualmente estoy cursando el tercer año de mi carrera, donde he podido desarrollar
         diversos proyectos que me han permitido aplicar y expandir mis conocimientos en
         desarrollo web. Mi enfoque principal ha sido el frontend, trabajando en proyectos
@@ -23,8 +23,8 @@ import Layout from "../layouts/layout.astro"
         de desarrollo.
       </p>
       
-      <h2 class="text-2xl font-semibold mt-8 mb-4">Proyectos Destacados</h2>
-      <ul class="list-disc pl-6 space-y-2">
+      <h2 class="text-xl md:text-2xl font-semibold mt-6 md:mt-8 mb-3 md:mb-4">Proyectos Destacados</h2>
+      <ul class="list-disc pl-4 md:pl-6 space-y-2">
         <li>
           <strong>FortComponents:</strong> Biblioteca de componentes web construida con Astro
           y TailwindCSS, enfocada en la reutilización y personalización.
@@ -32,8 +32,8 @@ import Layout from "../layouts/layout.astro"
         
       </ul>
       
-      <h2 class="text-2xl font-semibold mt-8 mb-4">Tecnologías</h2>
-      <ul class="list-disc pl-6 grid grid-cols-2 gap-2">
+      <h2 class="text-xl md:text-2xl font-semibold mt-6 md:mt-8 mb-3 md:mb-4">Tecnologías</h2>
+      <ul class="list-disc pl-4 md:pl-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
         <li>Astro</li>
         <li>React</li>
         <li>TailwindCSS</li>

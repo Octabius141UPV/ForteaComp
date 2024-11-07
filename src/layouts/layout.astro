@@ -19,7 +19,7 @@ const { title } = Astro.props; // Recibe el título de la página como prop
   </head>
   <body class="bg-white text-primaryText dark:bg-gray-900 dark:text-white">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-primaryColor to-secondaryColor dark:from-dark-primary dark:to-dark-accent p-4 text-primaryText flex items-center justify-between rounded-b-lg overflow-x-hidden relative">
+    <header class="bg-gradient-to-r from-primaryColor to-secondaryColor dark:from-dark-primary dark:to-dark-accent p-4 text-primaryText flex items-center justify-between rounded-b-lg overflow-x-hidden relative -mb-4">
       
       <!-- Logo -->
       <div class="flex items-center bg-white rounded-lg lg:pr-3 2xl:py-1 hover:scale-105 transition-transform custom-shadow-colored m-1 duration-200">
@@ -60,10 +60,12 @@ const { title } = Astro.props; // Recibe el título de la página como prop
             </a>
           </button>
           
-          <!-- Añadir el botón de modo oscuro aquí -->
-          <DarkModeToggle client:load />
+          <!-- Dark mode toggle - visible only on desktop -->
+          <div class="hidden lg:block">
+            <DarkModeToggle client:load iconColor="white" />
+          </div>
         </div>
-      
+
         <!-- Icono de Menú para móviles -->
         <div class="relative lg:hidden text-black dark:text-white">
           <button id="menuButton" class="lg:hidden">
@@ -72,7 +74,7 @@ const { title } = Astro.props; // Recibe el título de la página como prop
           
           <div id="mobileMenu" class="fixed right-4 mt-2 w-64 bg-white dark:bg-dark-surface rounded-lg shadow-lg py-4 lg:hidden text-black dark:text-white z-50 hidden">
             <nav class="px-4">
-              <ul class="space-y-4 font-semibold text-primaryText">
+              <ul class="space-y-4 font-semibold text-primaryText dark:text-dark-text">
                 <li class="hover:text-primaryColor transition-colors"><a href="/">Inicio</a></li>
                 <li class="hover:text-primaryColor transition-colors"><a href="/about">Acerca de</a></li>
                 <li class="hover:text-primaryColor transition-colors"><a href="/installation">Instalación</a></li>
@@ -81,8 +83,12 @@ const { title } = Astro.props; // Recibe el título de la página como prop
                 <a href="/doc">
                   Componentes
                 </a>
-                  
               </button>
+              
+              <!-- Dark mode toggle - visible only on mobile -->
+              <div class="mt-4 flex justify-center lg:hidden">
+                <DarkModeToggle client:load iconColor="black" />
+              </div>
             </nav>
           </div>
         </div>
