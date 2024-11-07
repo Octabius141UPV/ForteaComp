@@ -1,28 +1,29 @@
 ---
-// src/components/Features.astro
+import { Icon } from "astro-icon/components";
 ---
 
-<section class="py-16 px-4 bg-gray-50">
+
+<section class="py-16 px-4 bg-gray-50 dark:bg-dark-surface">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primaryColor to-secondaryColor text-transparent bg-clip-text">
-      Características principales
+    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primaryColor to-secondaryColor dark:from-dark-accent dark:to-primaryColor text-transparent bg-clip-text">
+      Características Destacadas
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="p-6 rounded-lg text-center">
-        <h3 class="text-xl font-semibold mb-3 text-secondaryColor">Fácil de usar</h3>
-        <p>
-          Documentación clara y ejemplos prácticos para implementar rápidamente.
-        </p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 bg-white dark:bg-dark-primary rounded-xl shadow-lg">
+        <Icon name="mdi:flash" class="w-12 h-12 text-primaryColor dark:text-dark-accent mb-4"/>
+        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Rendimiento</h3>
+        <p class="text-gray-600 dark:text-gray-300">Optimizados para máxima velocidad y eficiencia</p>
       </div>
-      <div class="p-6 rounded-lg text-center">
-        <h3 class="text-xl font-semibold mb-3 text-secondaryColor">Diseño Moderno</h3>
-        <p>Estilos modernos y atractivos que se adaptan a cualquier diseño.</p>
+      <div class="p-6 bg-white dark:bg-dark-primary rounded-xl shadow-lg">
+        <Icon name="mdi:brush" class="w-12 h-12 text-primaryColor dark:text-dark-accent mb-4"/>
+        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Personalizable</h3>
+        <p class="text-gray-600 dark:text-gray-300">Adapta cada componente a tu diseño</p>
       </div>
-      <div class="p-6 rounded-lg text-center">
-        <h3 class="text-xl font-semibold mb-3 text-secondaryColor">Alta Personalización</h3>
-        <p>Configura cada componente según las necesidades de tu proyecto.</p>
+      <div class="p-6 bg-white dark:bg-dark-primary rounded-xl shadow-lg">
+        <Icon name="mdi:check-circle" class="w-12 h-12 text-primaryColor dark:text-dark-accent mb-4"/>
+        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Accesible</h3>
+        <p class="text-gray-600 dark:text-gray-300">Diseñado siguiendo estándares WCAG</p>
       </div>
     </div>
   </div>
 </section>
-  

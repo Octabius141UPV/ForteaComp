@@ -1,31 +1,46 @@
 ---
-// src/components/FeaturedComponents.astro
+import { Icon } from "astro-icon/components";
+
+const components = [
+  {
+    icon: "mdi:button-cursor",
+    name: "Buttons",
+    description: "Botones interactivos y grupos de botones",
+    href: "/doc/components/buttons"
+  },
+  {
+    icon: "mdi:form-select",
+    name: "Forms",
+    description: "Campos de entrada, selects y controles",
+    href: "/doc/components/forms"
+  },
+  {
+    icon: "mdi:view-dashboard",
+    name: "Layout",
+    description: "Estructuras y contenedores flexibles",
+    href: "/doc/components/layout"
+  }
+];
 ---
 
 <section class="py-16 px-4">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primaryColor to-secondaryColor text-transparent bg-clip-text">
-      Nuestros Componentes
+    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primaryColor to-secondaryColor dark:from-dark-accent dark:to-primaryColor text-transparent bg-clip-text">
+      Componentes Populares
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="p-6 border rounded-lg text-center hover:shadow-lg transition-shadow duration-300">
-        <h3 class="text-xl font-semibold mb-3 text-secondaryColor">Botones</h3>
-        <p>
-          Colección de botones personalizables con diferentes estilos y estados.
-        </p>
-        <a href="/components/buttons" class="mt-4 inline-block text-primaryColor hover:underline">Ver más</a>
-      </div>
-      <div class="p-6 border rounded-lg text-center hover:shadow-lg transition-shadow duration-300">
-        <h3 class="text-xl font-semibold mb-3 text-secondaryColor">Tarjetas</h3>
-        <p>Tarjetas de contenido versátiles y fáciles de configurar.</p>
-        <a href="/components/cards" class="mt-4 inline-block text-primaryColor hover:underline">Ver más</a>
-      </div>
-      <div class="p-6 border rounded-lg text-center hover:shadow-lg transition-shadow duration-300">
-        <h3 class="text-xl font-semibold mb-3 text-secondaryColor">Modales</h3>
-        <p>Ventanas emergentes personalizables para tus aplicaciones.</p>
-        <a href="/components/modals" class="mt-4 inline-block text-primaryColor hover:underline">Ver más</a>
-      </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {components.map(component => (
+        <a href={component.href} class="group h-full">
+          <div class="h-full p-6 bg-white dark:bg-dark-primary rounded-xl shadow-lg transition-transform hover:scale-105">
+            <Icon name={component.icon} class="w-12 h-12 text-primaryColor dark:text-dark-accent mb-4"/>
+            <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white group-hover:text-primaryColor dark:group-hover:text-dark-accent transition-colors">
+              {component.name}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">{component.description}</p>
+          </div>
+        </a>
+      ))}
     </div>
+    
   </div>
 </section>
-  
