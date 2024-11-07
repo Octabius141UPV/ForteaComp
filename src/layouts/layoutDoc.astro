@@ -4,48 +4,10 @@ import { Icon } from "astro-icon/components";
 import DarkModeToggle from '../components/DarkModeToggle';
 
 const { title } = Astro.props;
+const {description} = Astro.props;
 
 // Estructura de navegación actualizada (sin introducción)
-const docNavigation = [
-  {
-    section: "Componentes",
-    items: [
-      { 
-        title: "Buttons",
-        href: "/docs/components/buttons",
-        subitems: ["Button", "IconButton", "ButtonGroup"]
-      },
-      { 
-        title: "Forms",
-        href: "/docs/components/forms",
-        subitems: ["Input", "Select", "Checkbox", "Radio", "Switch"]
-      },
-      { 
-        title: "Layout",
-        href: "/docs/components/layout",
-        subitems: ["Container", "Grid", "Box", "Stack", "Divider"]
-      },
-      { 
-        title: "Navigation",
-        href: "/docs/components/navigation",
-        subitems: ["Menu", "Tabs", "Breadcrumb", "Link", "Pagination"]
-      },
-      { 
-        title: "Feedback",
-        href: "/docs/components/feedback",
-        subitems: ["Alert", "Toast", "Progress", "Spinner"]
-      }
-    ]
-  },
-  {
-    section: "Guías",
-    items: [
-      { title: "Personalización", href: "/docs/guides/customization" },
-      { title: "Mejores Prácticas", href: "/docs/guides/best-practices" },
-      { title: "Resolución de Problemas", href: "/docs/guides/troubleshooting" },
-    ]
-  }
-];
+import { components } from '../data/componentData.ts';
 ---
 
 <html lang="es">
@@ -53,6 +15,7 @@ const docNavigation = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title ? `${title} | Docs FortComponents` : "Documentación FortComponents"}</title>
+    <meta name="description" content={description} />
     <link rel="icon" href="/favicon.png" />
   </head>
   <body class="bg-white dark:bg-gray-900 dark:text-white">
@@ -61,8 +24,8 @@ const docNavigation = [
       <div class="flex items-center justify-between max-w-7xl mx-auto">
         <!-- Logo -->
         <a href="/" class="flex items-center space-x-2 bg-white rounded-lg px-4 py-2 hover:scale-105 transition-transform duration-200">
-          <Image src="/favicon.png" alt="Logo" class="w-8 h-8" width="32" height="32" />
-          <span class="font-bold text-primaryColor">FortComponents</span>
+          <Image src="/logo.png" alt="Logo" class="w-8 h-8" width="32" height="32" />
+          <span class=" hidden lg:block font-bold text-primaryColor">FortComponents</span>
         </a>
 
         <!-- Búsqueda -->
@@ -100,36 +63,22 @@ const docNavigation = [
       <!-- Sidebar izquierdo fusionado -->
       <aside id="sidebar" class="w-72 bg-gray-50 dark:bg-dark-primary fixed h-[calc(100vh-4rem)] overflow-y-auto transition-transform duration-300 lg:translate-x-0 -translate-x-full lg:relative top-16 left-0 shrink-0">
         <nav class="p-4 pt-10">
-          {docNavigation.map((section) => (
+          {Object.entries(components).map(([section, data]) => (
             <div class="mb-6">
               <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-                {section.section}
+                {section}
               </h3>
+              <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{data.description}</p>
               <ul class="space-y-2">
-                {section.items.map((item) => (
+                {data.items.map((item) => (
                   <li>
                     <a 
-                      href={item.href}
-                      class={`block px-3 py-2 text-gray-700 dark:text-dark-text hover:bg-primaryColor hover:text-white dark:hover:bg-dark-accent rounded-lg transition-colors duration-200 ${
-                        'subitems' in item ? 'mb-1' : ''
-                      }`}
+                      href={`/doc/components/${section.toLowerCase()}#${item.name.toLowerCase()}`}
+                      class="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-dark-text hover:bg-primaryColor hover:text-white dark:hover:bg-dark-accent rounded-lg transition-colors duration-200"
                     >
-                      {item.title}
+                      <Icon name={item.icon} class="w-5 h-5" />
+                      <span>{item.name}</span>
                     </a>
-                    {'subitems' in item && (
-                      <ul class="ml-4 mt-1 space-y-1">
-                        {item.subitems.map((subitem: string) => (
-                          <li>
-                            <a 
-                              href={`/docs/components/${item.title.toLowerCase()}/${subitem.toLowerCase()}`}
-                              class="block px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hover:text-primaryColor dark:hover:text-dark-accent hover:bg-primaryColor/10 dark:hover:bg-dark-accent/10 rounded-lg transition-colors duration-200"
-                            >
-                              {subitem}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
                   </li>
                 ))}
               </ul>
@@ -139,8 +88,8 @@ const docNavigation = [
       </aside>
 
       <!-- Contenedor principal con ancho controlado -->
-      <div class="flex-1 flex justify-center min-h-screen pt-10">
-        <div class="w-full px-6 py-8 mx-auto">
+      <div class="flex-1 flex justify-center min-h-screen pt-20">
+        <div class="w-full px-6 my-8 mx-auto">
           <slot />
         </div>
       </div>
@@ -224,13 +173,7 @@ const docNavigation = [
           </div>
 
           <!-- Soporte -->
-          <div class="bg-primaryColor/5 dark:bg-dark-primary rounded-lg p-4">
-            <h3 class="text-lg font-bold mb-2 text-primaryText dark:text-white">¿Necesitas ayuda?</h3>
-            <a href="#" class="inline-flex items-center gap-2 text-accent hover:underline">
-              <Icon name="mdi:discord" class="w-5 h-5" />
-              Únete a Discord
-            </a>
-          </div>
+         
         </div>
       </aside>
     </div>

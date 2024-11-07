@@ -1,0 +1,209 @@
+---
+import LayoutDoc from "../../../../layouts/layoutDoc.astro";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  OutlineButton,
+  IconButton,
+  IconPrimaryButton
+} from '@components/react/buttons/index';
+import { Icon } from 'astro-icon/components';
+
+
+---
+
+<LayoutDoc
+title="Buttons"
+description="Explora varios estilos y funcionalidades de botones para mejorar las interacciones de los usuarios.">
+    
+    <div class="p-2 md:p-6 space-y-6 max-w-3xl mx-auto">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-6">
+            <h1 class="text-2xl md:text-3xl font-bold mb-3">Buttons</h1>
+            <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+    s            Colección de botones diseñados para diferentes propósitos y contextos de uso. Disponibles en tres estilos principales: Primary, Secondary y Outline.
+            </p>
+        </section>
+
+        <!-- Primary Button Section -->
+        <section id="primary" class="border dark:border-gray-700 rounded-lg p-3 md:p-6 bg-white dark:bg-gray-800 shadow-sm">
+            <h2 class="text-xl font-semibold mb-4">Primary Button</h2>
+            <div class="space-y-6">
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                    Botón principal con gradiente y efectos visuales. Ideal para llamadas a la acción (CTA) y acciones principales.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <PrimaryButton>Default</PrimaryButton>
+                    <PrimaryButton color="red">Danger</PrimaryButton>
+                    <PrimaryButton color="green">Success</PrimaryButton>
+                    <PrimaryButton color="purple">Info</PrimaryButton>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-4">
+                    <PrimaryButton size="small">Small</PrimaryButton>
+                    <PrimaryButton size="medium">Medium</PrimaryButton>
+                    <PrimaryButton size="large">Large</PrimaryButton>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+                    <pre class="text-sm"><code>{`<PrimaryButton color="blue">Default</PrimaryButton>
+<PrimaryButton color="red">Danger</PrimaryButton>
+<PrimaryButton size="small">Small</PrimaryButton>`}</code></pre>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-medium">Props disponibles:</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                        <li><code>color</code>: 'blue' | 'red' | 'green' | 'purple' | 'yellow' | 'orange' | 'gray' | 'pink' | 'cyan' | 'teal'</li>
+                        <li><code>size</code>: 'small' | 'medium' | 'large'</li>
+                        <li><code>fullWidth</code>: boolean</li>
+                        <li><code>disabled</code>: boolean</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary Button Section -->
+        <section id="secondary" class="border dark:border-gray-700 rounded-lg p-3 md:p-6 bg-white dark:bg-gray-800 shadow-sm">
+            <h2 class="text-xl font-semibold mb-4">Secondary Button</h2>
+            <div class="space-y-6">
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                    Botón con efecto de subrayado animado. Perfecto para navegación y acciones secundarias.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <SecondaryButton>Default</SecondaryButton>
+                    <SecondaryButton color="red">Danger</SecondaryButton>
+                    <SecondaryButton color="green">Success</SecondaryButton>
+                    <SecondaryButton color="purple">Info</SecondaryButton>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-4">
+                    <SecondaryButton size="small">Small</SecondaryButton>
+                    <SecondaryButton size="medium">Medium</SecondaryButton>
+                    <SecondaryButton size="large">Large</SecondaryButton>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+                    <pre class="text-sm"><code>{`<SecondaryButton color="blue">Default</SecondaryButton>
+<SecondaryButton color="red">Danger</SecondaryButton>
+<SecondaryButton size="small">Small</SecondaryButton>`}</code></pre>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-medium">Props disponibles:</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                        <li><code>color</code>: 'blue' | 'red' | 'green' | 'purple' | 'yellow' | 'orange' | 'gray' | 'pink' | 'cyan' | 'teal'</li>
+                        <li><code>size</code>: 'small' | 'medium' | 'large'</li>
+                        <li><code>fullWidth</code>: boolean</li>
+                        <li><code>disabled</code>: boolean</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outline Button Section -->
+        <section id="outline" class="border dark:border-gray-700 rounded-lg p-3 md:p-6 bg-white dark:bg-gray-800 shadow-sm">
+            <h2 class="text-xl font-semibold mb-4">Outline Button</h2>
+            <div class="space-y-6">
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                    Botón con borde y efecto hover suave. Ideal para acciones alternativas o contextos que requieren menos énfasis visual.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <OutlineButton>Default</OutlineButton>
+                    <OutlineButton color="red">Danger</OutlineButton>
+                    <OutlineButton color="green">Success</OutlineButton>
+                    <OutlineButton color="purple">Info</OutlineButton>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-4">
+                    <OutlineButton size="small">Small</OutlineButton>
+                    <OutlineButton size="medium">Medium</OutlineButton>
+                    <OutlineButton size="large">Large</OutlineButton>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+                    <pre class="text-sm"><code>{`<OutlineButton color="blue">Default</OutlineButton>
+<OutlineButton color="red">Danger</OutlineButton>
+<OutlineButton size="small">Small</OutlineButton>`}</code></pre>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-medium">Props disponibles:</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                        <li><code>color</code>: 'blue' | 'red' | 'green' | 'purple' | 'yellow' | 'orange' | 'gray' | 'pink' | 'cyan' | 'teal'</li>
+                        <li><code>size</code>: 'small' | 'medium' | 'large'</li>
+                        <li><code>fullWidth</code>: boolean</li>
+                        <li><code>disabled</code>: boolean</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Buttons Section -->
+        <section id="icon-buttons" class="border dark:border-gray-700 rounded-lg p-3 md:p-6 bg-white dark:bg-gray-800 shadow-sm">
+            <h2 class="text-xl font-semibold mb-4">Icon Buttons</h2>
+            <div class="space-y-6">
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                    Botones con iconos disponibles en diferentes estilos y variantes.
+                </p>
+
+                <!-- Solo Icon Button -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium">Icon Only Buttons</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <IconButton color="blue" size="medium">
+                            <Icon name="mdi:plus" size={20} />
+                        </IconButton>
+                        
+                        <IconButton color="red" size="medium">
+                            <Icon name="mdi:delete" size={20} />
+                        </IconButton>
+
+                        <IconButton color="pink" size="medium">
+                            <Icon name="mdi:heart" size={20} />
+                        </IconButton>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+                        <pre class="text-sm"><code>{`<IconButton color="blue">
+    <Icon name="mdi:plus" size={20} />
+</IconButton>`}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Icon with Text Button -->
+                <div class="space-y-4 pt-6">
+                    <h3 class="text-lg font-medium">Buttons with Icons</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <IconPrimaryButton color="blue" size="medium">
+                            <Icon name="mdi:plus" size={20} />
+                            Añadir nuevo
+                        </IconPrimaryButton>
+
+                        <IconPrimaryButton color="green" size="medium">
+                            <Icon name="mdi:download" size={20} />
+                            Descargar
+                        </IconPrimaryButton>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+                        <pre class="text-sm"><code>{`<IconPrimaryButton color="blue" size="medium">
+    <Icon name="mdi:plus" size={20} />
+    Añadir nuevo
+</IconPrimaryButton>`}</code></pre>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h3 class="font-medium">Props adicionales:</h3>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                            <li><code>icon</code>: Iconify component (<a href="https://icon-sets.iconify.design/" class="text-blue-500 hover:underline" target="_blank">Ver iconos disponibles</a>)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</LayoutDoc>

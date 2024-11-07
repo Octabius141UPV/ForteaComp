@@ -13,5 +13,17 @@ import vercel from '@astrojs/vercel/serverless';
 export default defineConfig({
   integrations: [tailwind(), icon(), react()],
   output: 'server',
-  adapter: vercel()
+  adapter: vercel(),
+  vite: {
+    resolve: {
+      alias: {
+        '@': '/src',
+        '@components': '/src/components',
+        '@layouts': '/src/layouts',
+        '@pages': '/src/pages',
+        '@styles': '/src/styles',
+        '@utils': '/src/utils'
+      }
+    }
+  }
 });

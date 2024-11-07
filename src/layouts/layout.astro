@@ -19,19 +19,19 @@ const { title } = Astro.props; // Recibe el título de la página como prop
   </head>
   <body class="bg-white text-primaryText dark:bg-gray-900 dark:text-white">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-primaryColor to-secondaryColor dark:from-dark-primary dark:to-dark-accent p-4 text-primaryText flex items-center justify-between rounded-b-lg overflow-x-hidden relative -mb-4">
+    <header class="bg-gradient-to-r from-primaryColor to-secondaryColor dark:from-dark-primary dark:to-dark-accent p-2 sm:p-3 md:p-4 text-primaryText flex items-center justify-between rounded-b-lg overflow-x-hidden relative -mb-4">
       
       <!-- Logo -->
-      <div class="flex items-center bg-white rounded-lg lg:pr-3 2xl:py-1 hover:scale-105 transition-transform custom-shadow-colored m-1 duration-200">
+      <div class="flex items-center bg-white rounded-lg lg:pr-2 xl:pr-3 hover:scale-105 transition-transform custom-shadow-colored m-1 duration-200">
         <a class="flex items-center" href="/">
           <Image 
             src="/logo.png" 
             alt="Logo de FortComponents" 
-            class="2xl:m-4 m-2" 
-            width="50" 
-            height="50"
+            class="m-1 sm:m-2 2xl:m-4" 
+            width={40}
+            height={40}
           />
-          <span class="2xl:text-2xl text-xl font-bold hidden lg:block text-primaryColor transition-colors duration-200">
+          <span class="text-lg sm:text-xl 2xl:text-2xl font-bold hidden lg:block text-primaryColor transition-colors duration-200">
             FortComponents
           </span>
         </a>
@@ -39,23 +39,23 @@ const { title } = Astro.props; // Recibe el título de la página como prop
       
       
         <!-- Navegación Central Permanentemente Centrada -->
-        <nav class="absolute left-1/2 transform -translate-x-1/2 lg:block hidden 2xl:text-xl text-lg">
-          <ul class="flex space-x-8 font-semibold text-white">
-            <li class="hover:scale-105 transition-transform"><a href="/">Inicio</a></li>
-            <li class="hover:scale-105 transition-transform"><a href="/about">Acerca de</a></li>
-            <li class="hover:scale-105 transition-transform"><a href="/installation">Instalación</a></li>
+        <nav class="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
+          <ul class="flex space-x-4 md:space-x-6 lg:space-x-8 font-semibold text-white">
+            <li class="hover:scale-105 transition-transform text-sm sm:text-base lg:text-lg 2xl:text-xl"><a href="/">Inicio</a></li>
+            <li class="hover:scale-105 transition-transform text-sm sm:text-base lg:text-lg 2xl:text-xl"><a href="/about">Acerca de</a></li>
+            <li class="hover:scale-105 transition-transform text-sm sm:text-base lg:text-lg 2xl:text-xl"><a href="/installation">Instalación</a></li>
           </ul>
         </nav>
       
         <!-- Botón Componentes -->
-        <div class="flex items-center gap-4">
-          <button class="bg-accent dark:bg-dark-accent custom-shadow-lg rounded-lg py-3 px-8 hidden lg:block m-1 group relative overflow-hidden hover:bg-primaryColor dark:hover:bg-dark-primary hover:text-white transition-colors duration-300">
+        <div class="flex items-center gap-2 sm:gap-3 md:gap-4">
+          <button class="bg-accent dark:bg-dark-accent custom-shadow-lg rounded-lg py-2 sm:py-3 px-4 sm:px-6 lg:px-8 hidden lg:block m-1 group relative overflow-hidden hover:bg-primaryColor dark:hover:bg-dark-primary hover:text-white transition-colors duration-300">
             <a href="/doc">
               <div class="flex items-center justify-between relative z-10 transition-transform duration-300 group-hover:translate-x-[-150%]">
-                <span class="text-white font-bold 2xl:text-xl text-lg">Componentes</span>
+                <span class="text-white font-bold text-base sm:text-lg xl:text-xl">Componentes</span>
               </div>
               <div class="absolute inset-0 flex items-center justify-center translate-x-full transition-transform duration-300 group-hover:translate-x-0">
-                <Icon name="mdi:arrow-right" class="w-10 h-10 text-white" />
+                <Icon name="mdi:arrow-right" class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
             </a>
           </button>
@@ -69,15 +69,15 @@ const { title } = Astro.props; // Recibe el título de la página como prop
         <!-- Icono de Menú para móviles -->
         <div class="relative lg:hidden text-black dark:text-white">
           <button id="menuButton" class="lg:hidden">
-            <Icon name="mdi:menu" class="w-14 h-14 hover:text-primaryColor transition-colors duration-200 text-white" />
+            <Icon name="mdi:menu" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 hover:text-primaryColor transition-colors duration-200 text-white" />
           </button>
           
-          <div id="mobileMenu" class="fixed right-4 mt-2 w-64 bg-white dark:bg-dark-surface rounded-lg shadow-lg py-4 lg:hidden text-black dark:text-white z-50 hidden">
-            <nav class="px-4">
-              <ul class="space-y-4 font-semibold text-primaryText dark:text-dark-text">
-                <li class="hover:text-primaryColor transition-colors"><a href="/">Inicio</a></li>
-                <li class="hover:text-primaryColor transition-colors"><a href="/about">Acerca de</a></li>
-                <li class="hover:text-primaryColor transition-colors"><a href="/installation">Instalación</a></li>
+          <div id="mobileMenu" class="fixed right-4 mt-2 w-56 sm:w-64 bg-white dark:bg-dark-surface rounded-lg shadow-lg py-4 lg:hidden text-black dark:text-white z-50 hidden">
+            <nav class="px-3 sm:px-4">
+              <ul class="space-y-3 sm:space-y-4 font-semibold text-primaryText dark:text-dark-text">
+                <li class="hover:text-primaryColor transition-colors text-sm sm:text-base"><a href="/">Inicio</a></li>
+                <li class="hover:text-primaryColor transition-colors text-sm sm:text-base"><a href="/about">Acerca de</a></li>
+                <li class="hover:text-primaryColor transition-colors text-sm sm:text-base"><a href="/installation">Instalación</a></li>
               </ul>
               <button class="w-full bg-accent rounded-lg py-2 px-4 mt-4 text-white font-bold">
                 <a href="/doc">

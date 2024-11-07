@@ -5,7 +5,8 @@ import {components} from '../../data/componentData.ts';
 
 ---
 
-<LayoutDoc title="Documentación de Componentes">
+<LayoutDoc title="" description = "">
+  "Explora nuestra colección completa de componentes UI reutilizables. Encuentra documentación detallada, ejemplos y guías de uso para cada componente."
   <div class="max-w-4xl mx-auto">
     <div class="my-8">
       <h1 class="text-5xl font-bold mb-4 text-primaryText dark:text-dark-text">Documentación</h1>
@@ -21,8 +22,8 @@ import {components} from '../../data/componentData.ts';
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {data.items.map((item) => (
-              <a
-                href={`/docs/components/${(typeof item === 'string' ? item : item.name).toLowerCase()}`}
+                <a
+                href={`/doc/components/${category.toLowerCase()}#${(typeof item === 'string' ? item : item.name).toLowerCase()}`}
                 class="p-4 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] 
                        hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)] 
                        hover:scale-[1.02] transition-all duration-150 
