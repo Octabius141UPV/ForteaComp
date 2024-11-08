@@ -1,7 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
 import { Icon } from "astro-icon/components";
-import DarkModeToggle from '../components/DarkModeToggle';
+
+import DarkModeToggle from "../astroComp/DarkModeToggle";
 
 // src/layouts/layout.astro
 
@@ -49,7 +50,7 @@ const { title } = Astro.props; // Recibe el título de la página como prop
       
         <!-- Botón Componentes -->
         <div class="flex items-center gap-2 sm:gap-3 md:gap-4">
-          <button class="bg-accent dark:bg-dark-accent custom-shadow-lg rounded-lg py-2 sm:py-3 px-4 sm:px-6 lg:px-8 hidden lg:block m-1 group relative overflow-hidden hover:bg-primaryColor dark:hover:bg-dark-primary hover:text-white transition-colors duration-300">
+          <button class="bg-accent dark:bg-purple-900 custom-shadow-lg rounded-lg py-2 sm:py-3 px-4 sm:px-6 lg:px-8 hidden lg:block m-1 group relative overflow-hidden hover:bg-primaryColor dark:hover:bg-purple-800 hover:text-white transition-colors duration-300">
             <a href="/doc">
               <div class="flex items-center justify-between relative z-10 transition-transform duration-300 group-hover:translate-x-[-150%]">
                 <span class="text-white font-bold text-base sm:text-lg xl:text-xl">Componentes</span>
@@ -79,7 +80,7 @@ const { title } = Astro.props; // Recibe el título de la página como prop
                 <li class="hover:text-primaryColor transition-colors text-sm sm:text-base"><a href="/about">Acerca de</a></li>
                 <li class="hover:text-primaryColor transition-colors text-sm sm:text-base"><a href="/installation">Instalación</a></li>
               </ul>
-              <button class="w-full bg-accent rounded-lg py-2 px-4 mt-4 text-white font-bold">
+              <button class="w-full bg-accent dark:bg-purple-900 rounded-lg py-2 px-4 mt-4 text-white font-bold">
                 <a href="/doc">
                   Componentes
                 </a>
@@ -87,7 +88,7 @@ const { title } = Astro.props; // Recibe el título de la página como prop
               
               <!-- Dark mode toggle - visible only on mobile -->
               <div class="mt-4 flex justify-center lg:hidden">
-                <DarkModeToggle client:load iconColor="black" />
+                <DarkModeToggle client:only="react" iconColor="black" />
               </div>
             </nav>
           </div>

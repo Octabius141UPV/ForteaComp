@@ -3,31 +3,59 @@ import Layout from "../layouts/layout.astro"
 ---
 
 <Layout title="Guía de Instalación">
-  <div class="max-w-3xl mx-auto p-6">
+  <div class="max-w-3xl mx-auto p-6 lg:p-8 xl:p-10 2xl:p-12">
     <h1 class="text-3xl font-bold mb-8">Guía de Instalación</h1>
     
     <div class="prose dark:prose-invert">
-      <h2 class="text-2xl font-semibold mb-4">Inicio Rápido</h2>
+      <h2 class="text-2xl font-semibold mb-4">Instalación</h2>
       
       <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-6">
-        <code class="text-sm">npm install your-package-name</code>
+        <code class="text-sm">npm install fortea-comp</code>
       </div>
-      
-      <h2 class="text-2xl font-semibold mt-8 mb-4">Uso Básico</h2>
-      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-        <pre><code class="language-javascript">
-<!-- import { Component } from 'your-package-name';
 
-// Implementación básica
-const example = new Component();
-example.init(); -->
-        </code></pre>
-      </div>
-      
-      <h2 class="text-2xl font-semibold mt-8 mb-4">Configuración</h2>
-      <p>
-        Describe aquí las opciones de configuración de tu paquete...
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Configuración de Tailwind CSS</h2>
+      <p class="mb-4">
+        Asegúrate de tener Tailwind CSS instalado y configurado en tu proyecto. Agrega la siguiente configuración a tu archivo tailwind.config.js:
       </p>
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-6">
+        <pre><code class="language-javascript">{`module.exports = {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/fortea-comp/**/*.{js,jsx}'
+  ],
+  theme: {
+    extend: {
+      // Tus personalizaciones aquí
+    }
+  },
+  plugins: []
+}`}</code></pre>
+      </div>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Uso Básico</h2>
+      <p class="mb-4">
+        Importa los componentes que necesites:
+      </p>
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-6">
+        <pre><code class="language-javascript">{`import { PrimaryButton, SecondaryButton } from 'fortea-comp';
+
+function App() {
+  return (
+    <div>
+      <PrimaryButton>Click me</PrimaryButton>
+      <SecondaryButton>Cancel</SecondaryButton>
+    </div>
+  );
+}`}</code></pre>
+      </div>
+      <div class="pb-4 lg:pb-6 xl:pb-8 2xl:pb-10">
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Soporte</h2>
+      <p>
+        Si encuentras algún problema o tienes alguna sugerencia, por favor abre un issue en 
+        <a href="https://github.com/tuusuario/fortea-comp/issues" class="text-blue-500 hover:underline">GitHub</a>.
+      </p>
+      </div>
     </div>
   </div>
 </Layout>

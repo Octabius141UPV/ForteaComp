@@ -11,19 +11,7 @@ import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon(), react()],
+  integrations: [react(), tailwind(), icon()], // Nota: react() debe ir primero
   output: 'server',
-  adapter: vercel(),
-  vite: {
-    resolve: {
-      alias: {
-        '@': '/src',
-        '@components': '/src/components',
-        '@layouts': '/src/layouts',
-        '@pages': '/src/pages',
-        '@styles': '/src/styles',
-        '@utils': '/src/utils'
-      }
-    }
-  }
+  adapter: vercel()
 });

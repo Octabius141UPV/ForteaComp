@@ -1,13 +1,43 @@
 {
   "name": "fortea-comp",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "description": "Librería de componentes React con Tailwind CSS",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "build": "rollup -c",
+    "prepare": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "tailwindcss": ">=3.0.0"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwind",
+    "design-system"
+  ],
+  "author": "Raúl Fortea",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuusuario/fortea-comp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tuusuario/fortea-comp/issues"
+  },
+  "homepage": "https://github.com/tuusuario/fortea-comp#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "rollup": "^4.24.4"
+  }
 }
