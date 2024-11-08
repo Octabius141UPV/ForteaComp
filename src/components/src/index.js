@@ -5,3 +5,9 @@ export { SecondaryButton } from 'src/react/buttons/SecondaryButton';
 export { OutlineButton } from 'src/react/buttons/OutlineButton';
 export { IconPrimaryButton } from 'src/react/buttons/IconPrimaryButton';
 export { IconButton } from 'src/react/buttons/IconButton';
+
+export { 
+    ButtonGroup,
+    SegmentedButtonGroup,
+    IconButtonGroup 
+  } from 'src/react/buttons/ButtonGroup';
